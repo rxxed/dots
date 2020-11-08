@@ -1,0 +1,10 @@
+bmcfg                   /home/rd5k/.config/bmcfg
+vim                     /home/rd5k/.config/nvim/init.vim
+dunst                   /home/rd5k/.config/dunst/dunstrc
+newsboat-urls           /home/rd5k/.config/newsboat/urls
+newsboat-config         /home/rd5k/.config/newsboat/config
+ncmpcpp                 /home/rd5k/.config/ncmpcpp/config
+mpd                     /home/rd5k/.config/mpd/mpd.conf
+zsh                     /home/rd5k/.config/zsh/.zshrc
+bmsweb                  /home/rd5k/.config/bmsweb
+zathura                 /home/rd5k/.config/zathura/zathurarc
