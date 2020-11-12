@@ -12,4 +12,4 @@ Dotfiles include programs:
 - zsh (Shell)
 - neovim (Text Editor)
 - dunst (Notification Daemon)
-- htop (Task Visualizer)
+- htop (Process Visualizer)
