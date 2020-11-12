@@ -13,3 +13,5 @@ Dotfiles include programs:
 - neovim (Text Editor)
 - dunst (Notification Daemon)
 - htop (Process Visualizer)
+
+I use GNU stow to manage my dotfiles.
