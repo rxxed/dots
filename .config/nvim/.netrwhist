@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =7
-let g:netrw_dirhist_7='/etc/runit/sv/NetworkManager'
-let g:netrw_dirhist_6='/etc/runit/sv'
-let g:netrw_dirhist_5='/home/rd5k/misc/journal'
-let g:netrw_dirhist_4='/home/rd5k/misc/.gpg'
-let g:netrw_dirhist_3='/etc/X11/xorg.conf.d'
-let g:netrw_dirhist_2='/home/rd5k/repos/st'
-let g:netrw_dirhist_1='/home/rd5k/.config/htop'
