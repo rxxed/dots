@@ -27,7 +27,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-eunuch'
-" Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'junegunn/fzf'
 Plug 'chrisbra/Colorizer'
 Plug 'vim-scripts/ReplaceWithRegister'
@@ -56,12 +56,12 @@ set smartindent
 set clipboard=unnamedplus
 
 " (don't) display the status bar
-set laststatus=0
+set laststatus=2
 
 " airline statusbar
 " let g:airline_powerline_fonts = 1
 " let g:airline#extensions#tabline#enabled = 1
-" let g:airline_theme='term'
+let g:airline_theme='term'
 " let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 " let g:airline#extensions#tabline#left_alt_sep = '|'
 
@@ -101,7 +101,7 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 " hi CursorLineNR term=bold cterm=bold
 
 " airline and syntax colors
-" colorscheme peachpuff
+colorscheme peachpuff
 " let g:airline_theme="dracula"
 
 " don't wrap lines

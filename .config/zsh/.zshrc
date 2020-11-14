@@ -52,8 +52,8 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
-path+=('/home/rd5k/work/scr')
-path+=('/home/rd5k/.local/bin')
+path+=('/home/rsh/work/scr')
+path+=('/home/rsh/.local/bin')
 
 ## aliases
 alias tl='task list'

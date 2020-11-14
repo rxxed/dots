@@ -49,10 +49,10 @@
   (add-hook 'pdf-view-mode-hook 'pdf-view-restore-mode))
 (add-hook 'pdf-view-mode-hook 'pdf-view-midnight-minor-mode)
 
-(use-package org-bullets
-  :hook (org-mode . org-bullets-mode)
-  :config
-  (setq org-bullets-bullet-list '("❂" "☯" "✿" "❁" "❄" "✽")))
+;; (use-package org-bullets
+;;   :hook (org-mode . org-bullets-mode)
+;;   :config
+;;   (setq org-bullets-bullet-list '("❂" "☯" "✿" "❁" "❄" "✽")))
 
 (use-package org-agenda
   :config
@@ -64,6 +64,10 @@
     ("td" "Deadlined todo item" entry
      (file "todo.org")
      "* TODO %?\n%a\nDEADLINE: %^t\n")
+
+    ("h" "Habit" entry
+     (file "habits.org")
+     "* TODO %?\nSCHEDULED: %^t\n")
 
     ("b" "Add book")
     ("bt" "To be read" table-line
