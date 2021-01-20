@@ -1,2 +1,11 @@
-map <C--> zoom out
-map <C-=> zoom in
+map <C-->                       zoom out
+map <C-=>                       zoom in
+
+# nord theme 
+set statusbar-bg                "#ffffff"
+set statusbar-fg                "#000000"
+set recolor-lightcolor          "#2B313C" 
+set recolor-darkcolor           "#ffffff" 
+
+# dark mode by default
+set recolor                     true
