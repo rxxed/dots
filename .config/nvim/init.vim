@@ -61,7 +61,7 @@ set laststatus=2
 " airline statusbar
 " let g:airline_powerline_fonts = 1
 " let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='term'
+" let g:airline_theme='term'
 " let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 " let g:airline#extensions#tabline#left_alt_sep = '|'
 
@@ -108,8 +108,8 @@ colorscheme peachpuff
 " set nowrap
 
 " delete trailing whitespaces and newlines on save
-autocmd BufWritePre * %s/\s\+$//e
-autocmd BufWritepre * %s/\n\+\%$//e
+" autocmd BufWritePre * %s/\s\+$//e
+" autocmd BufWritepre * %s/\n\+\%$//e
 
 "---------------------- KEY MAPS ------------------------
 
@@ -184,6 +184,8 @@ nnoremap <Leader>g :Goyo<CR>
 
 " quickscope toggle
 nnoremap <Leader>q :QuickScopeToggle<CR>
+" Trigger a highlight in the appropriate direction when pressing these keys:
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 "-----------------------FILETYPE SPECIFIC----------------------------
 
@@ -192,6 +194,9 @@ autocmd FileType rust noremap <F6> :!cargo<space>run
 autocmd FileType rust noremap <F7> :!cargo<space>test<CR>
 
 autocmd FileType python nnoremap <F5> :!python %
+autocmd FileType python set tabstop=8
+autocmd FileType python set shiftwidth=8
+autocmd FileType python set softtabstop=8
 
 autocmd FileType html inoremap ,html <html></html><Esc>F<i<CR><CR><Esc>k"_cc<head></head><Esc>F<i<CR><CR><Esc>k"_cc<title></title><Esc>F<i<++><Esc>/head<CR>o<body></body><Esc>F<i<CR><CR><Esc>k"_cc<++><Esc>?html<CR>
 autocmd FileType html inoremap ,bt <b></b><Esc>F<i

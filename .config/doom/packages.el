@@ -51,7 +51,9 @@
 
 (package! modus-vivendi-theme)
 (package! modus-operandi-theme)
+(package! cyberpunk-theme)
 (package! general)
 (package! pdf-tools)
 (package! pdf-view-restore)
 (package! org-bullets)
+(package! frames-only-mode)

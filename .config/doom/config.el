@@ -3,10 +3,10 @@
 (setq user-full-name "Raaed Shaikh"
       user-mail-address "rdsh@tutanota.de")
 
-(setq doom-font (font-spec :family "Terminus (TTF)" :size 22 :weight 'regular)
+(setq doom-font (font-spec :family "Fantasque Sans Mono" :size 19 :weight 'regular)
       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 
-(setq doom-theme 'modus-vivendi)
+(setq doom-theme 'cyberpunk)
 
 (setq org-directory "~/docs/org")
 
@@ -49,10 +49,10 @@
   (add-hook 'pdf-view-mode-hook 'pdf-view-restore-mode))
 (add-hook 'pdf-view-mode-hook 'pdf-view-midnight-minor-mode)
 
-;; (use-package org-bullets
-;;   :hook (org-mode . org-bullets-mode)
-;;   :config
-;;   (setq org-bullets-bullet-list '("❂" "☯" "✿" "❁" "❄" "✽")))
+(use-package org-bullets
+  :hook (org-mode . org-bullets-mode)
+  :config
+  (setq org-bullets-bullet-list '("♠" "♣" "♥" "♦")))
 
 (use-package org-agenda
   :config
@@ -106,6 +106,16 @@
  :states 'normal
  "SPC o F" 'elfeed-update-and-elfeed)
 
+(general-define-key
+ :states 'insert
+ :keymaps 'override
+ "C-h" 'evil-delete-backward-char)
+
+(general-define-key
+ :states 'normal
+ :keymaps 'override
+ "SPC g p" 'magit-push)
+
 (use-package elfeed
   :config
   (setq elfeed-feeds
@@ -116,3 +126,9 @@
       ("https://www.youtube.com/feeds/videos.xml?channel_id=UC0uTPqBCFIpZxlz_Lv1tk_g" yt emacs)
       ("https://mangasee123.com/rss/Hunter-X-Hunter.xml" manga)))
   (setq-default elfeed-search-filter "@2-week-ago "))
+
+(global-display-line-numbers-mode t)
+
+; open new buffers in new frames
+;; (frames-only-mode t)
+;; (setq pop-up-frames t)

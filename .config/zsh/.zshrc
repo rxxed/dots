@@ -54,6 +54,7 @@ bindkey -v '^?' backward-delete-char
 
 path+=('/home/rsh/work/scr')
 path+=('/home/rsh/.local/bin')
+path+=('/home/rsh/.radicle/bin')
 
 ## aliases
 alias tl='task list'
@@ -77,7 +78,7 @@ alias yta='youtube-dl -x --audio-format mp3'
 alias config='git --git-dir=$HOME/.dots/ --work-tree=$HOME'
 alias ll='ls -lh'
 
-bindkey -s '^o' 'ranger\n'
+bindkey -s '^o' 'lf\n'
 
 export MPD_HOST="127.0.0.1"
 export MPD_PORT="6606"
