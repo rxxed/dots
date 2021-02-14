@@ -9,3 +9,6 @@ set recolor-darkcolor           "#ffffff"
 
 # dark mode by default
 set recolor                     true
+
+# copy selected items into clipboard instead of primary
+set selection-clipboard clipboard
