@@ -1,9 +1,9 @@
 map <C-->                       zoom out
 map <C-=>                       zoom in
 
-# nord theme 
-set statusbar-bg                "#ffffff"
-set statusbar-fg                "#000000"
+# dark theme
+set statusbar-fg                "#ffffff"
+set statusbar-bg                "#000000"
 set recolor-lightcolor          "#000100" 
 set recolor-darkcolor           "#ffffff" 
 
@@ -12,3 +12,5 @@ set recolor                     true
 
 # copy selected items into clipboard instead of primary
 set selection-clipboard clipboard
+
+set font "VictorMono bold 11"
