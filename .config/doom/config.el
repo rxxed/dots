@@ -132,3 +132,13 @@
 ; open new buffers in new frames
 ;; (frames-only-mode t)
 ;; (setq pop-up-frames t)
+
+(use-package org-wild-notifier
+  :ensure t
+  :custom
+  (alert-default-style 'libnotify)
+  (org-wild-notifier-alert-time '(1 10 30))
+  (org-wild-notifier-keyword-whitelist nil)
+  (org-wild-notifier-notification-title "Org Mode")
+  :config
+  (org-wild-notifier-mode 1))
