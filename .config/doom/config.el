@@ -1,12 +1,12 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 (setq user-full-name "Raaed Shaikh"
-      user-mail-address "rdsh@tutanota.de")
+      user-mail-address "raaed@tuta.io")
 
-(setq doom-font (font-spec :family "Fantasque Sans Mono" :size 19 :weight 'regular)
+(setq doom-font (font-spec :family "VictorMono" :size 16 :weight 'semibold)
       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 
-(setq doom-theme 'cyberpunk)
+(setq doom-theme 'danneskjold)
 
 (setq org-directory "~/docs/org")
 
@@ -28,6 +28,14 @@
  :states 'visual
  :keymaps 'override
  "s" 'evil-substitute)
+
+(general-define-key
+ :states 'normal
+ "^" 'evil-digit-argument-or-evil-beginning-of-line)
+
+(general-define-key
+ :states 'normal
+ "0" 'evil-first-non-blank)
 
 (general-define-key
  :states 'normal
@@ -94,13 +102,49 @@
  "SPC o t" 'vterm)
 
 (general-define-key
+ :states 'insert
+ :keymaps 'override
+ "M-l" 'evil-window-right)
+(general-define-key
  :states 'normal
  :keymaps 'override
- "C-." 'evil-window-next)
+ "M-l" 'evil-window-right)
+
 (general-define-key
  :states 'insert
  :keymaps 'override
- "C-." 'evil-window-next)
+ "M-h" 'evil-window-left)
+(general-define-key
+ :states 'normal
+ :keymaps 'override
+ "M-h" 'evil-window-left)
+
+(general-define-key
+ :states 'insert
+ :keymaps 'override
+ "M-h" 'evil-window-left)
+(general-define-key
+ :states 'normal
+ :keymaps 'override
+ "M-h" 'evil-window-left)
+
+(general-define-key
+ :states 'insert
+ :keymaps 'override
+ "M-k" 'evil-window-up)
+(general-define-key
+ :states 'normal
+ :keymaps 'override
+ "M-k" 'evil-window-up)
+
+(general-define-key
+ :states 'insert
+ :keymaps 'override
+ "M-j" 'evil-window-down)
+(general-define-key
+ :states 'normal
+ :keymaps 'override
+ "M-j" 'evil-window-down)
 
 (general-define-key
  :states 'normal
@@ -111,23 +155,10 @@
  :keymaps 'override
  "C-h" 'evil-delete-backward-char)
 
-(general-define-key
- :states 'normal
- :keymaps 'override
- "SPC g p" 'magit-push)
-
-(use-package elfeed
-  :config
-  (setq elfeed-feeds
-    '(("https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA" yt linux)
-      ("https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA" yt linux)
-      ("https://www.youtube.com/feeds/videos.xml?channel_id=UCSHZKyawb77ixDdsGog4iWA" yt podcast)
-      ("https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg" yt linux)
-      ("https://www.youtube.com/feeds/videos.xml?channel_id=UC0uTPqBCFIpZxlz_Lv1tk_g" yt emacs)
-      ("https://mangasee123.com/rss/Hunter-X-Hunter.xml" manga)))
-  (setq-default elfeed-search-filter "@2-week-ago "))
-
 (global-display-line-numbers-mode t)
+
+(setq c-default-style "bsd"
+      c-basic-offset  8)
 
 ; open new buffers in new frames
 ;; (frames-only-mode t)
