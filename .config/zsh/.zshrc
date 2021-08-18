@@ -55,6 +55,8 @@ bindkey -v '^?' backward-delete-char
 path+=('/home/rsh/work/scr')
 path+=('/home/rsh/.local/bin')
 path+=('/home/rsh/.radicle/bin')
+path+=('/home/rsh/.local/share/gem/ruby/3.0.0/bin')
+path+=('/home/rsh/.local/share/go/bin')
 
 ## aliases
 alias tl='task list'
@@ -72,13 +74,41 @@ alias sl='ls'
 alias r='ranger'
 alias grep='grep --color=auto'
 alias cx='chmod +x'
-alias ec='emacsclient'
 alias yt='youtube-dl'
 alias yta='youtube-dl -x --audio-format mp3'
 alias config='git --git-dir=$HOME/.dots/ --work-tree=$HOME'
 alias ll='ls -lh'
+alias nnn='nnn -Red'
+alias lf='lfrun'
 
-bindkey -s '^o' 'lf\n'
+bindkey -s '^o' 'lfrun\n'
+
+n() {
+    # Block nesting of nnn in subshells
+    if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
+        echo "nnn is already running"
+        return
+    fi
+
+    # The default behaviour is to cd on quit (nnn checks if NNN_TMPFILE is set)
+    # To cd on quit only on ^G, remove the "export" as in:
+    #     NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+    # NOTE: NNN_TMPFILE is fixed, should not be modified
+    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+
+    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
+    # stty start undef
+    # stty stop undef
+    # stty lwrap undef
+    # stty lnext undef
+
+    nnn "$@"
+
+    if [ -f "$NNN_TMPFILE" ]; then
+            . "$NNN_TMPFILE"
+            rm -f "$NNN_TMPFILE" > /dev/null
+    fi
+}
 
 export MPD_HOST="127.0.0.1"
 export MPD_PORT="6606"
@@ -89,6 +119,7 @@ export MPD_PORT="6606"
 # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vi_mode dir)
 # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
 
+eval "$(starship init zsh)"
 ## zsh syntax highlighting
 # must be at the end of zshrc
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
