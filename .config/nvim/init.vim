@@ -5,33 +5,41 @@
 " ╹ ╹┗━╸┗━┛┗┛ ╹╹ ╹   ┗━╸┗━┛╹ ╹╹  ╹┗━┛┗━┛╹┗╸╹ ╹ ╹ ╹┗━┛╹ ╹
 
 " Plugins {{{
-
 call plug#begin(stdpath('data') . '/plugged')
 
-Plug 'jreybert/vimagit'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-eunuch'
-Plug 'vim-airline/vim-airline'
-Plug 'junegunn/fzf'
-Plug 'chrisbra/Colorizer'
-Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'unblevable/quick-scope'
-Plug 'junegunn/goyo.vim'
-Plug 'llathasa-veleth/vim-brainfuck'
+Plug 'airblade/vim-gitgutter'
+Plug 'arcticicestudio/nord-vim'
 Plug 'axvr/org.vim'
+Plug 'chrisbra/Colorizer'
 Plug 'dylanaraps/wal.vim'
 Plug 'godlygeek/tabular'
+Plug 'jreybert/vimagit'
+Plug 'junegunn/fzf'
+Plug 'junegunn/goyo.vim'
+Plug 'llathasa-veleth/vim-brainfuck'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'morhetz/gruvbox'
 Plug 'plasticboy/vim-markdown'
+Plug 'ptzz/lf.vim'
+Plug 'tomlion/vim-solidity'
+Plug 'tools-life/taskwiki'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'unblevable/quick-scope'
+Plug 'urbit/hoon.vim'
+" Plug 'vim-airline/vim-airline'
+Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vimwiki/vimwiki'
+Plug 'voldikss/vim-floaterm'
+Plug 'yuezk/vim-js'
 
 call plug#end()
-
 " }}}
 
-" Basic configuration {{{
 " syntax highlighting, ruler, line numbers
 syntax on
 set ruler
@@ -49,7 +57,7 @@ set smartindent
 set clipboard=unnamedplus
 
 " (don't) display the status bar
-set laststatus=2
+set laststatus=1
 
 " incremental search results
 set incsearch
@@ -68,44 +76,43 @@ set smartcase
 " set NoMatchParen
 let loaded_matchparen=1
 
-" disable arrow keys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+" " disable arrow keys
+" nnoremap <up> <nop>
+" nnoremap <down> <nop>
+" nnoremap <left> <nop>
+" nnoremap <right> <nop>
+" inoremap <up> <nop>
+" inoremap <down> <nop>
+" inoremap <left> <nop>
+" inoremap <right> <nop>
 
 " disable auto commenting
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
-" highlight current line
-" set cursorline
-" hi CursorLine term=bold cterm=bold
-" hi CursorLineNR term=bold cterm=bold
-
 " airline and syntax colors
-colorscheme wal
-" let g:airline_theme="dracula"
+" set background="light"
+" let g:gruvbox_contrast_light="hard"
+" colorscheme default
+" set termguicolors
+" let g:airline_theme="gruvbox"
 
 " don't wrap lines
 " set nowrap
+
+" don't break words while wrapping
+set linebreak
 
 " delete trailing whitespaces and newlines on save
 " autocmd BufWritePre * %s/\s\+$//e
 " autocmd BufWritepre * %s/\n\+\%$//e
 
 nnoremap <Leader>r :source $HOME/.config/nvim/init.vim<CR>
-" }}}
 
-" Splits {{{
 set splitbelow splitright
 noremap <C-left> :vertical resize +3<CR>
 noremap <C-right> :vertical resize -3<CR>
-noremap <C-up> :resize +3<CR>
-noremap <C-down> :resize -3<CR>
+noremap <C-up> :resize -3<CR>
+noremap <C-down> :resize +3<CR>
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -114,31 +121,24 @@ nnoremap <C-l> <C-w>l
 
 " vertical split-line
 set fillchars+=vert:-
-" }}}
 
-" Vim airline {{{
 " airline statusbar
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 " let g:airline#extensions#tabline#enabled = 1
 " let g:airline_theme='term'
 " let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 " let g:airline#extensions#tabline#left_alt_sep = '|'
-" }}}
 
-" Highlight {{{
-" hi CursorLine   cterm=NONE
+hi CursorLine   cterm=NONE
 " hi CursorColumn cterm=NONE
 " set cursorline! cursorcolumn!
 " set cursorline
 " set cursorcolumn
 " nnoremap <Leader>h :set cursorline! cursorcolumn!<CR>
-" }}}
 
-" Vimwiki {{{
 let g:vimwiki_list = [{'path': '~/.local/share/vimwiki'}]
-" }}}
+" let g:vimwiki_conceal_pre = 1 " conceals preformatted text markers
 
-" Remaps {{{
 " use space as leader key
 nnoremap <Space> <nop>
 let mapleader=" "
@@ -212,7 +212,7 @@ nnoremap <Leader>t :Tabularize<space>/
 vnoremap <Leader>t :Tabularize<space>/
 
 " use <tab> in normal mode to open and close folds
-nnoremap <tab> za
+nnoremap <Leader>; za
 
 " sent presentations
 nnoremap <F7> :!sent %<CR>
@@ -224,9 +224,26 @@ inoremap <F3> <C-r>=strftime('%F')<CR>
 " insert date with the exact time using <F4>
 nnoremap <F4> "=strftime('%F %T')<CR>
 inoremap <F4> <C-r>=strftime('%F %T')<CR>
-" }}}
 
-" Functions {{{
+" open file in sxiv
+nnoremap <Leader>img yiW:!sxiv<space><C-r>"<CR>
+" open file in zathura
+nnoremap <Leader>pdf yiW:!zathura<space><C-r>"<CR>
+" open link in browser
+nnoremap <Leader>ll 0/ttps<CR>lyiW:!brave<space>--new-tab<space><C-r>"<CR>
+
+" invoke lf
+let g:lf_map_keys=0
+nnoremap <C-p> :Lf<CR>
+
+" wrapped lines vertical movement
+" uses gj/gk when moving a single line up/down
+" uses j/k when prefixed with a number
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
+
+nnoremap <Leader>h :GitGutterPrevHunk<CR>
+nnoremap <Leader>l :GitGutterNextHunk<CR>
 
 " " From https://gist.github.com/tpope/287147
 " inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
@@ -240,9 +257,7 @@ inoremap <F4> <C-r>=strftime('%F %T')<CR>
 "     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
 "   endif
 " endfunction
-" }}}
 
-" Filetype Specific {{{
 autocmd FileType rust noremap <F5> :!cargo<space>build<CR>
 autocmd FileType rust noremap <F6> :!cargo<space>run
 autocmd FileType rust noremap <F7> :!cargo<space>test<CR>
@@ -252,29 +267,40 @@ autocmd FileType python set tabstop=4
 autocmd FileType python set shiftwidth=4
 autocmd FileType python set softtabstop=4
 
-autocmd FileType html inoremap ,html <html></html><Esc>F<i<CR><CR><Esc>k"_cc<head></head><Esc>F<i<CR><CR><Esc>k"_cc<title></title><Esc>F<i<++><Esc>/head<CR>o<body></body><Esc>F<i<CR><CR><Esc>k"_cc<++><Esc>?html<CR>
-autocmd FileType html inoremap ,bt <b></b><Esc>F<i
-autocmd FileType html inoremap ,it <i></i><Esc>F<i
-autocmd FileType html inoremap ,span <span></span><Esc>F<i
-autocmd FileType html inoremap ,div <div></div><Esc>F<i<CR><CR><Esc>k"_cc
-autocmd FileType html inoremap ,p <p></p><Esc>F<i
-autocmd FileType html inoremap ,br <br><Esc>a
-autocmd FileType html inoremap ,strong <strong></strong><Esc>F<i
-autocmd FileType html inoremap ,code <code></code><Esc>F<i
-autocmd FileType html inoremap ,a <a<space>href="<++>"><++></a><Esc>Fa;
-autocmd FileType html inoremap ,img <img<space>src=""><Esc>F"i
-autocmd FileType html inoremap ,f <form></form><Esc>F<i<CR><CR><Esc>k"_cc
-autocmd FileType html inoremap ,ta <table></table><Esc>F<i<CR><CR><Esc>k"_cc
-autocmd FileType html inoremap ,ul <ul></ul><Esc>F<i<CR><CR><Esc>k"_cc
-autocmd FileType html inoremap ,li <li></li><Esc>F<i
-autocmd FileType html inoremap ,tr <tr></tr><Esc>F<i<CR><CR><Esc>k"_cc
-autocmd FileType html inoremap ,td <td></td><Esc>F<i<CR><CR><Esc>k"_cc
-autocmd FileType html inoremap ,th <th></th><Esc>F<i<CR><CR><Esc>k"_cc
-autocmd FileType html inoremap ,h1 <h1></h1><Esc>F<i
-autocmd FileType html inoremap ,h2 <h2></h2><Esc>F<i
-autocmd FileType html inoremap ,h3 <h3></h3><Esc>F<i
-autocmd FileType html inoremap ,h4 <h4></h4><Esc>F<i
-autocmd FileType html inoremap ,link <link /><Esc>Fka<space>rel="stylesheet"<space>type="text/css"<space>href="<++>"<space>media="screen"<Esc>?link<CR>
+autocmd FileType javascript,css set tabstop=4
+autocmd FileType javascript,css set shiftwidth=4
+autocmd FileType javascript,css set softtabstop=4
+
+autocmd FileType html,javascript set tabstop=4
+autocmd FileType html,javascript set shiftwidth=4
+autocmd FileType html,javascript set softtabstop=4
+autocmd FileType html,javascript inoremap ,html <html></html><Esc>F<i<CR><CR><Esc>k"_cc<head></head><Esc>F<i<CR><CR><Esc>k"_cc<title></title><Esc>F<i<++><Esc>/head<CR>o<body></body><Esc>F<i<CR><CR><Esc>k"_cc<++><Esc>?html<CR>
+autocmd FileType html,javascript inoremap ,bt <b></b><Esc>F<i
+autocmd FileType html,javascript inoremap ,it <i></i><Esc>F<i
+autocmd FileType html,javascript inoremap ,span <span></span><Esc>F<i
+autocmd FileType html,javascript inoremap ,div <div></div><Esc>F<i<CR><CR><Esc>k"_cc
+autocmd FileType html,javascript inoremap ,p <p></p><Esc>F<i
+autocmd FileType html,javascript inoremap ,br <br/><Esc>a
+autocmd FileType html,javascript inoremap ,strong <strong></strong><Esc>F<i
+autocmd FileType html,javascript inoremap ,code <code></code><Esc>F<i
+autocmd FileType html,javascript inoremap ,a <a<space>href="<++>"><++></a><Esc>Fa;
+autocmd FileType html,javascript inoremap ,img <img<space>src=""/><Esc>F"i
+autocmd FileType html,javascript inoremap ,f <form></form><Esc>F<i<CR><CR><Esc>k"_cc
+autocmd FileType html,javascript inoremap ,ta <table></table><Esc>F<i<CR><CR><Esc>k"_cc
+autocmd FileType html,javascript inoremap ,ul <ul></ul><Esc>F<i<CR><CR><Esc>k"_cc
+autocmd FileType html,javascript inoremap ,li <li></li><Esc>F<i
+autocmd FileType html,javascript inoremap ,tr <tr></tr><Esc>F<i<CR><CR><Esc>k"_cc
+autocmd FileType html,javascript inoremap ,td <td></td><Esc>F<i<CR><CR><Esc>k"_cc
+autocmd FileType html,javascript inoremap ,th <th></th><Esc>F<i<CR><CR><Esc>k"_cc
+autocmd FileType html,javascript inoremap ,h1 <h1></h1><Esc>F<i
+autocmd FileType html,javascript inoremap ,h2 <h2></h2><Esc>F<i
+autocmd FileType html,javascript inoremap ,h3 <h3></h3><Esc>F<i
+autocmd FileType html,javascript inoremap ,h4 <h4></h4><Esc>F<i
+autocmd FileType html,javascript inoremap ,link <link /><Esc>Fka<space>rel="stylesheet"<space>type="text/css"<space>href="<++>"<space>media="screen"<Esc>?link<CR>
+
+autocmd FileType htmldjango set tabstop=4
+autocmd FileType htmldjango set shiftwidth=4
+autocmd FileType htmldjango set softtabstop=4
 
 autocmd FileType tex map <F5> :w<CR>:!pdflatex %<CR>
 autocmd FileType tex map <F6> :!zathura *.pdf &<CR><CR>
@@ -282,4 +308,9 @@ autocmd FileType tex map <F6> :!zathura *.pdf &<CR><CR>
 autocmd FileType c map <F5> :!gcc % -o %.out<CR>
 autocmd FileType c map <F6> :!./%.out
 autocmd FileType c,cpp nnoremap <Leader>f /^
-" }}}
+
+autocmd FileType vimwiki inoremap ,now **<Esc>i<C-r>=strftime('%F %T')<CR><Esc>o
+autocmd FileType vimwiki nnoremap <Leader>= yyppVr=2kVr=j 
+autocmd FileType vimwiki set tabstop=4
+autocmd FileType vimwiki set shiftwidth=4
+autocmd FileType vimwiki set softtabstop=4
