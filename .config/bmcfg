@@ -9,3 +9,4 @@ zsh                     /home/rsh/.config/zsh/.zshrc
 bmsweb                  /home/rsh/.config/bmsweb
 zathura                 /home/rsh/.config/zathura/zathurarc
 sxhkd                   /home/rsh/repos/dwm/dwmsxhkdrc
+alacritty               /home/rsh/.config/alacritty/alacritty.yml

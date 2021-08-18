@@ -1,9 +1,9 @@
 searx                   https://searx.be
+duckduckgo              https://duckduckgo.com
+metager                 https://metager.org
 youtube                 https://youtube.com
 whatsapp                https://web.whatsapp.com
 tutanota                https://tutanota.com
-4g                      https://boards.4channel.org/g/
-libgen                  http://gen.lib.rus.ec/
 suckless                https://suckless.org/
 github                  https://github.com/
 reddit                  https://old.reddit.com/
@@ -13,4 +13,5 @@ lichess                 https://lichess.org/
 knr                     https://clc-wiki.net/wiki/K&R2_solutions
 wikipedia               https://www.wikipedia.org/
 tempmail                https://temp-mail.org/en/
-panopticlick            https://panopticlick.eff.org/
+ccmixter                http://beta.ccmixter.org/
+wallhaven               https://wallhaven.cc/
