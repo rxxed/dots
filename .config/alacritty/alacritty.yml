@@ -1,0 +1,81 @@
+import:
+  - ~/.alacritty_local.yml
+  - ~/.config/alacritty/themes/nord.yml
+env:
+  TERM: alacritty
+window:
+  title: Alacritty
+  dynamic_title: true
+  dimensions:
+    columns: 0
+    lines: 0
+  position:
+    x: 0
+    y: 0
+  padding:
+    x: 0
+    y: 0
+  dynamic_padding: false
+font:
+  normal:
+    family: Fira Code Retina
+    style: Medium
+  size: 14
+background_opacity: 0.65
+selection:
+  save_to_clipboard: true
+cursor:
+  style: Block
+  unfocused_hollow: true
+live_config_reload: true
+mouse:
+  hide_when_typing: true
+key_bindings:
+  - key: V
+    mods: Alt
+    action: Paste
+  - key: C
+    mods: Alt
+    action: Copy
+  - key: Equals
+    mods: Alt|Shift
+    action: ResetFontSize
+  - key: K
+    mods: Alt|Shift
+    action: IncreaseFontSize
+  - key: J
+    mods: Alt|Shift
+    action: DecreaseFontSize
+colors:
+  name: Mono Theme
+  author: ""
+  primary:
+    background: "#000000"
+    foreground: "#ffffff"
+  cursor:
+    text: "#000000"
+    cursor: "#ffffff"
+  normal:
+    black: "#000000"
+    red: "#6b6b6b"
+    green: "#c4c4c4"
+    yellow: "#b3b3b3"
+    blue: "#999999"
+    magenta: "#717171"
+    cyan: "#8a8a8a"
+    white: "#b5cabb"
+  bright:
+    black: "#202020"
+    red: "#464646"
+    green: "#f8f8f8"
+    yellow: "#eeeeee"
+    blue: "#7c7c7c"
+    magenta: "#adadad"
+    cyan: "#c0c0c0"
+    white: "#99ac9e"
+f": null
+" cyan: ": null
+white: "#ffffff"
+cyan: "#ffaaa0"
+"\n": null
+ffaaa0": null
